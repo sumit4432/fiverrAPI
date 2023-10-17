@@ -29,3 +29,7 @@ exports.loginUser = (req, res) => {
     res.status(200).json({ message: "Login successful", user });
   });
 };
+
+exports.getUser = (req, res) => {
+  res.status(200).json({ message: "hello Api" });
+};
