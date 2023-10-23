@@ -2,37 +2,62 @@ const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema(
   {
-    username: {
+    userId: {
       type: String,
       required: true,
     },
-    userEmail: {
+    title: {
       type: String,
       required: true,
     },
-    phone: {
+    totaalStar: {
+      type: String,
+      required: true,
+    },
+    starNumber: {
+      type: String,
+      required: true,
+    },
+    cat: {
+      type: String,
+      required: true,
+    },
+    price: {
       type: Number,
-      required: true,
     },
-    password: {
+    coverImg: {
       type: String,
       required: true,
     },
-    img: {
+    images: {
+      type: [string],
+      required: true,
+    },
+    userId: {
       type: String,
       required: true,
     },
-    country: {
+    sortTile: {
       type: String,
       required: true,
     },
-    isSeller: {
+    sortDesc: {
       type: String,
       required: true,
     },
-    desc: {
-      type: String,
-      required: true,
+    delevryTime: {
+      type: Number,
+    },
+    revision: {
+      type: Number,
+    },
+    featurs: {
+      type: [String],
+      required: false,
+    },
+    sales: {
+      type: Number,
+      requred: false,
     },
   },
   { timestamps: true }

@@ -1,4 +1,3 @@
-// server.js
 const express = require("express");
 const bodyParser = require("body-parser");
 const userRoutes = require("./router/UserRoute");
@@ -13,6 +12,7 @@ connectToDatabase()
     app.use("/api", userRoutes);
 
     // Start the server
+
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`);
     });

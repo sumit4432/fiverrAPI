@@ -1,36 +1,27 @@
 const mongoose = require("mongoose");
-
-const UserSchema = new mongoose.Schema(
+const ConversionSchema = new mongoose.Schema(
   {
-    username: {
+    id: {
       type: String,
       required: true,
     },
-    userEmail: {
+    sellerId: {
       type: String,
       required: true,
     },
-    phone: {
+    buyerId: {
       type: Number,
       required: true,
     },
-    password: {
+    readByBuyer: {
       type: String,
       required: true,
     },
-    img: {
+    readByBuyer: {
       type: String,
       required: true,
     },
-    country: {
-      type: String,
-      required: true,
-    },
-    isSeller: {
-      type: String,
-      required: true,
-    },
-    desc: {
+    lastmessage: {
       type: String,
       required: true,
     },
@@ -38,4 +29,4 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("Conversion", ConversionSchema);

@@ -3,6 +3,6 @@ const { registerUser, getUser } = require("../controller/UserCon");
 const router = express.Router();
 
 router.post("/register", registerUser);
-router.get("/user", getUser);
+router.post("/signin", );
 
 module.exports = router;
