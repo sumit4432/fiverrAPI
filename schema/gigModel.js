@@ -57,7 +57,7 @@ const UserSchema = new mongoose.Schema(
     },
     sales: {
       type: Number,
-      requred: false,
+      default: 0,
     },
   },
   { timestamps: true }

@@ -27,8 +27,8 @@ const UserSchema = new mongoose.Schema(
       required: true,
     },
     isSeller: {
-      type: String,
-      required: true,
+      type: Boolean,
+      default: true,
     },
     desc: {
       type: String,
