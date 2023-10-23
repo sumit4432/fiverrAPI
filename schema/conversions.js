@@ -4,6 +4,7 @@ const ConversionSchema = new mongoose.Schema(
     id: {
       type: String,
       required: true,
+      uinque: true,
     },
     sellerId: {
       type: String,
@@ -14,16 +15,16 @@ const ConversionSchema = new mongoose.Schema(
       required: true,
     },
     readByBuyer: {
-      type: String,
+      type: Boolean,
       required: true,
     },
     readByBuyer: {
-      type: String,
+      type: Boolean,
       required: true,
     },
     lastmessage: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   { timestamps: true }

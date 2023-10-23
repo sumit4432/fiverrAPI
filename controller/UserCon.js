@@ -1,6 +1,4 @@
-// User Register
-const User = require("../schema/UserSchema");
-
+const User = require("../schema/userModel");
 // Create a function to handle user registration
 exports.registerUser = (req, res) => {
   const userData = req.body;
@@ -30,6 +28,43 @@ exports.loginUser = (req, res) => {
   });
 };
 
-exports.getUser = (req, res) => {
-  res.status(200).json({ message: "hello Api" });
+exports.allUser = (req, res) => {
+  const getAllUser = new User(req.body);
+  newUser.save((err, user) => {
+    if (err) {
+      res.status(404).json({ err: "user not found" });
+    } else {
+      res.status(200).json(user);
+    }
+  });
+};
+
+exports.deleteUser = (req, res) => {
+  User.findOneAndDelete({ username: req.param.username }, (err, user) => {
+    if (err || !user) {
+      res.status(404).json(err);
+    } else {
+      res.status(201).json(user);
+    }
+  });
+};
+
+exports.updateUser = (req, res) => {
+  User.finndOneAndUpdate({ username: req.param.username }, (err, user) => {
+    if (err || !user) {
+      res.status(404).json("user not found");
+    } else {
+      res.status(201).json("user update sucessfuly");
+    }
+  });
+};
+
+exports.getUserByUsername = (req, res) => {
+  User.findOne({ username: req.param.usernam }, (err, user) => {
+    if (err || !user) {
+      res.status(404).json({ err: "user not found" });
+    } else {
+      res.status(200).json({ user });
+    }
+  });
 };
