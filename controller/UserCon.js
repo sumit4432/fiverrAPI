@@ -17,40 +17,49 @@ exports.registerUser = (req, res) => {
 
 exports.loginUser = (req, res) => {
   const { username, password } = req.body;
-  User.findOne({ username }, (err, user) => {
-    if (err || !user) {
-      return res.status(400).json({ error: "User not found" });
-    }
-    if (user.password !== password) {
-      return res.status(401).json({ error: "Incorrect password" });
-    }
-    res.status(200).json({ message: "Login successful", user });
-  });
-};
 
-exports.allUser = (req, res) => {
-  const getAllUser = new User(req.body);
-  newUser.save((err, user) => {
-    if (err) {
-      res.status(404).json({ err: "user not found" });
-    } else {
-      res.status(200).json(user);
-    }
-  });
+  User.findOne({ username })
+    .then((user) => {
+      if (!user) {
+        return res.status(400).json({ error: "User not found" });
+      }
+
+      if (user.password !== password) {
+        return res.status(401).json({ error: "Incorrect password" });
+      }
+
+      res.status(200).json({ message: "Login successful", user });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: "Internal server error" });
+    });
+};
+exports.getAllUser = (req, res) => {
+  User.find({})
+    .then((users) => {
+      res.status(200).json(users);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: "Internal server error" });
+    });
 };
 
 exports.deleteUser = (req, res) => {
-  User.findOneAndDelete({ username: req.param.username }, (err, user) => {
-    if (err || !user) {
-      res.status(404).json(err);
-    } else {
-      res.status(201).json(user);
-    }
-  });
+  User.findOneAndDelete({ username: req.params.username })
+    .then((user) => {
+      if (!user) {
+        res.status(404).json({ error: "User not found" });
+      } else {
+        res.status(200).json(user);
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({ error: "Internal server error" });
+    });
 };
 
 exports.updateUser = (req, res) => {
-  User.finndOneAndUpdate({ username: req.param.username }, (err, user) => {
+  User.finndOneAndUpdate({ username: req.params.username }, (err, user) => {
     if (err || !user) {
       res.status(404).json("user not found");
     } else {
@@ -60,11 +69,15 @@ exports.updateUser = (req, res) => {
 };
 
 exports.getUserByUsername = (req, res) => {
-  User.findOne({ username: req.param.usernam }, (err, user) => {
-    if (err || !user) {
-      res.status(404).json({ err: "user not found" });
-    } else {
-      res.status(200).json({ user });
-    }
-  });
+  User.findOne({ username: req.params.username })
+    .then((user) => {
+      if (!user) {
+        res.status(404).json({ error: "User not found" });
+      } else {
+        res.status(200).json({ user });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({ error: "Internal server error" });
+    });
 };
