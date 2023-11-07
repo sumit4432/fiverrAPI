@@ -5,6 +5,7 @@ const UserSchema = new mongoose.Schema(
     username: {
       type: String,
       required: true,
+      unique: true, // Fix the typo here
     },
     userEmail: {
       type: String,
@@ -28,7 +29,7 @@ const UserSchema = new mongoose.Schema(
     },
     isSeller: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     desc: {
       type: String,
