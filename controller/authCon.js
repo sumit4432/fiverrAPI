@@ -1,12 +1,12 @@
 require("dotenv").config();
-const User = require("../schema/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const UserModel = require("../schema/userModel");
 
 exports.register = async (req, res) => {
   try {
     const hash = bcrypt.hashSync(req.body.password, 5);
-    const newUser = new User({
+    const newUser = new UserModel({
       ...req.body,
       password: hash,
     });

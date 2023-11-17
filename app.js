@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 const { connectToDatabase } = require("./db/dbConnect");
 const userRoutes = require("./router/UserRoute");
 const authRoutes = require("./router/authRoute");
+const gigRoutes = require("./router/gigRoute");
 
 const app = express();
 
@@ -16,6 +17,7 @@ connectToDatabase()
     app.use(cookieParser());
     app.use("/api", userRoutes);
     app.use("/api", authRoutes);
+    app.use("/api", gigRoutes);
 
     // Start the server
 

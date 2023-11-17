@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema(
     username: {
       type: String,
       required: true,
-      unique: true, // Fix the typo here
+      unique: true,
     },
     userEmail: {
       type: String,
