@@ -27,23 +27,23 @@ const UserGig = new mongoose.Schema(
     },
     coverImg: {
       type: String,
-      required: true,
+      // required: true,
     },
     images: {
-      type: [String], 
-      required: true,
+      type: [String],
+      // required: true,
     },
     userId: {
       type: String,
-      required: true,
+      // required: true,
     },
     sortTile: {
       type: String,
-      required: true,
+      // required: true,
     },
     sortDesc: {
       type: String,
-      required: true,
+      // required: true,
     },
     delevryTime: {
       type: Number,
